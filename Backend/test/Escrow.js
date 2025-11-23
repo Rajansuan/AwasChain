@@ -1,10 +1,14 @@
-const { expect } = require('chai');
-const { ethers } = require('hardhat');
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
 
-const tokens = (n) => {
-    return ethers.utils.parseUnits(n.toString(), 'ether')
-}
+describe("RealEstate", () => {
+  it("deploys correctly and prints address", async () => {
+    const RealEstateFactory = await ethers.getContractFactory("RealEstate");
+    const realEstate = await RealEstateFactory.deploy();
+    await realEstate.deployed();
 
-describe('Escrow', () => {
+    console.log("RealEstate deployed to:", realEstate.address);
 
-})
+    expect(realEstate.address);
+  });
+});
